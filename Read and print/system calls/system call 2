@@ -1,0 +1,20 @@
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+
+int main() {
+    int fd = open("output.txt", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+    if (fd == -1) {
+        perror("open");
+        return 1;
+    }
+    const char *msg = "Hello, World!\n";
+    if (write(fd, msg, 14) == -1) {
+        perror("write");
+        close(fd);
+        return 1;
+    }
+    close(fd);
+    printf("Message written successfully.\n");
+    return 0;
+}
