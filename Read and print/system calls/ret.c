@@ -10,6 +10,6 @@ int main() {
 
     printf("File size: %ld bytes\n", fileStat.st_size);
     printf("Permissions: %o\n", fileStat.st_mode & 0777);
-    return 0;
+    return 
 }
 
